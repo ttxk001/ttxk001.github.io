@@ -23,11 +23,18 @@
         margin: 20px auto;
         padding: 10px;
         font-size: 18px;
-        background-color: #4CAF50;
         color: white;
         border: none;
         border-radius: 5px;
         cursor: pointer;
+    }
+
+    .play {
+        background-color: #4CAF50;
+    }
+
+    .pause {
+        background-color: #FF5733;
     }
 </style>
 </head>
@@ -38,17 +45,22 @@
     Your browser does not support the audio element.
 </audio>
 
-<button onclick="togglePlay()" id="playBtn">播放</button>
+<button onclick="togglePlay()" id="playBtn" class="play">播放</button>
 
 <script>
     var audio = document.getElementById('audioPlayer');
+    var playBtn = document.getElementById('playBtn');
 
     audio.onplay = function() {
-        document.getElementById('playBtn').innerHTML = '暂停';
+        playBtn.innerHTML = '暂停';
+        playBtn.classList.remove('play');
+        playBtn.classList.add('pause');
     };
 
     audio.onpause = function() {
-        document.getElementById('playBtn').innerHTML = '播放';
+        playBtn.innerHTML = '播放';
+        playBtn.classList.remove('pause');
+        playBtn.classList.add('play');
     };
 
     function togglePlay() {
