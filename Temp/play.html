@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>不再犹豫</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+    }
+    
+    #audioPlayer {
+        width: 80%;
+        max-width: 300px;
+        margin: 20px auto;
+    }
+
+    #playBtn {
+        display: block;
+        width: 80%;
+        max-width: 200px;
+        margin: 20px auto;
+        padding: 10px;
+        font-size: 18px;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .play {
+        background-color: #4CAF50;
+    }
+
+    .pause {
+        background-color: #FF5733;
+    }
+</style>
+</head>
+<body>
+
+<audio id="audioPlayer" controls>
+    <source src="https://a.ghfxj.com:8001/MP3/不再犹豫.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+
+<button onclick="togglePlay()" id="playBtn" class="play">播放</button>
+
+<script>
+    var audio = document.getElementById('audioPlayer');
+    var playBtn = document.getElementById('playBtn');
+
+    audio.onplay = function() {
+        playBtn.innerHTML = '暂停';
+        playBtn.classList.remove('play');
+        playBtn.classList.add('pause');
+    };
+
+    audio.onpause = function() {
+        playBtn.innerHTML = '播放';
+        playBtn.classList.remove('pause');
+        playBtn.classList.add('play');
+    };
+
+    function togglePlay() {
+        if (audio.paused) {
+            audio.play();
+        } else {
+            audio.pause();
+        }
+    }
+</script>
+
+</body>
+</html>
